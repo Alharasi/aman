@@ -1,0 +1,54 @@
+---
+const { site, activeLanguage } = Astro.props;
+const contactIconDefinitions = {
+  github: { icon: '/icons/github.svg', ar: 'جيت هب', en: 'GitHub' },
+  store: { icon: '/icons/store.svg', ar: 'المتجر', en: 'Store' },
+  contact: { icon: '/icons/contact.svg', ar: 'التواصل', en: 'Contact' },
+  email: { icon: '/icons/email.svg', ar: 'البريد الإلكتروني', en: 'Email' },
+  external: { icon: '/icons/external.svg', ar: 'الموقع الإلكتروني', en: 'Website' },
+  facebook: { icon: '/icons/facebook.svg', ar: 'فيسبوك', en: 'Facebook' },
+  instagram: { icon: '/icons/instagram.svg', ar: 'إنستغرام', en: 'Instagram' },
+  location: { icon: '/icons/location.svg', ar: 'الموقع', en: 'Location' },
+  linkedin: { icon: '/icons/linkedin.svg', ar: 'لينكدإن', en: 'LinkedIn' },
+  link: { icon: '/icons/link.svg', ar: 'رابط', en: 'Link' },
+  phone: { icon: '/icons/phone.svg', ar: 'الهاتف', en: 'Phone' },
+  telegram: { icon: '/icons/telegram.svg', ar: 'تيليجرام', en: 'Telegram' },
+  tiktok: { icon: '/icons/tiktok.svg', ar: 'تيك توك', en: 'TikTok' },
+  whatsapp: { icon: '/icons/whatsapp.svg', ar: 'واتساب', en: 'WhatsApp' }
+} as const;
+
+const links = Object.entries(site.contactLinks).filter(([, value]) => value && value.trim() !== '#');
+---
+<section class="slide" data-slide="home" aria-label={site.profile.name[activeLanguage]}>
+  <div class="content">
+    <div class="avatar-stage">
+      <img src={site.profile.image} alt={site.profile.name[activeLanguage]} width="360" height="360" />
+    </div>
+    <h1 data-ar={site.profile.name.ar} data-en={site.profile.name.en}>{site.profile.name[activeLanguage]}</h1>
+    <p class="subtitle" data-ar={site.profile.title.ar} data-en={site.profile.title.en}>
+      {site.profile.title[activeLanguage]}
+    </p>
+    <div class="divider" aria-hidden="true"><span></span></div>
+    {links.length > 0 && (
+      <div class="contact-icons is-configured" aria-label={activeLanguage === 'ar' ? 'وسائل التواصل' : 'Contact links'}>
+        {links.map(([key, url]) => {
+          const definition = contactIconDefinitions[key as keyof typeof contactIconDefinitions];
+          const isExternal = !/^(mailto:|tel:)/i.test(url);
+          return (
+            <a
+              class={`contact-icon contact-icon--${key}`}
+              href={url}
+              aria-label={definition[activeLanguage]}
+              data-label-ar={definition.ar}
+              data-label-en={definition.en}
+              target={isExternal ? '_blank' : undefined}
+              rel={isExternal ? 'noopener noreferrer' : undefined}
+            >
+              <img src={definition.icon} alt="" />
+            </a>
+          );
+        })}
+      </div>
+    )}
+  </div>
+</section>

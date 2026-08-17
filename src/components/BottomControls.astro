@@ -1,0 +1,25 @@
+---
+const { site, activeLanguage } = Astro.props;
+const bilingual = site.settings.languageMode === 'both';
+---
+<div class="page-indicator">
+  <div
+    class="page-name"
+    id="pageName"
+    aria-live="polite"
+    data-home-ar={site.navigation.home.ar}
+    data-home-en={site.navigation.home.en}
+    data-about-ar={site.navigation.about.ar}
+    data-about-en={site.navigation.about.en}
+  >{site.navigation.home[activeLanguage]}</div>
+  <div class="bottom-controls">
+    <button class="motion-dot-window" id="motionDotButton" type="button" aria-label={activeLanguage === 'ar' ? 'القسم التالي' : 'Next section'}>
+      <span class="motion-arrow" id="motionDot" aria-hidden="true"></span>
+    </button>
+    {bilingual && (
+      <button class="floating-language" type="button" id="langToggle" aria-label={activeLanguage === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'}>
+        <span id="langIcon">{activeLanguage === 'ar' ? 'EN' : 'AR'}</span>
+      </button>
+    )}
+  </div>
+</div>
