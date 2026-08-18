@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="about.cv">
-  <rect width="64" height="64" rx="16" fill="#f6f2ea"/>
-  <circle cx="32" cy="23" r="10" fill="none" stroke="#2f2b26" stroke-width="4"/>
-  <path d="M15 53c2-12 9-18 17-18s15 6 17 18" fill="none" stroke="#2f2b26" stroke-width="4" stroke-linecap="round"/>
-</svg>

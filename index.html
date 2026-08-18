@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="أداة عربية خفيفة لإدارة وعرض المشاريع والمبادرات.">
+  <meta name="author" content="Ibrahim Alharrasi">
+  <meta name="theme-color" content="#f7f7f5">
+  <title>PMO.guide | أداة إدارة المشاريع والمبادرات</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="intro" aria-labelledby="site-title">
+      <div class="mark" aria-hidden="true">PMO</div>
+      <h1 id="site-title">PMO.guide</h1>
+      <p class="tagline">أداة إدارة المشاريع والمبادرات</p>
+      <p class="developer">تطوير إبراهيم الحراصي</p>
+      <p class="certs">PMI-PMOCP™ &nbsp;|&nbsp; PMP® &nbsp;|&nbsp; CAPM® &nbsp;|&nbsp; PMI-RMP® &nbsp;|&nbsp; PMI-PBA® &nbsp;|&nbsp; ACCA FBT</p>
+
+      <div class="actions">
+        <a class="button primary" href="PMO-Portfolio-Toolkit-v3.0.xlsx" download>تحميل الملف</a>
+        <label class="button secondary" for="excel-file">فتح الملف وعرضه</label>
+        <input id="excel-file" type="file" accept=".xlsx,.xls" hidden>
+      </div>
+      <p class="privacy">يُقرأ الملف داخل متصفحك فقط ولا يتم رفع بياناته إلى الموقع.</p>
+      <p id="file-status" class="file-status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="viewer" class="viewer" hidden aria-label="عرض المشاريع">
+      <div class="viewer-head">
+        <div>
+          <small>عرض الملف</small>
+          <h2>محفظة المشاريع</h2>
+        </div>
+        <button id="reset-file" class="text-button" type="button">إغلاق الملف</button>
+      </div>
+
+      <div id="summary" class="summary"></div>
+
+      <div class="projects-card">
+        <div class="list-head"><span>المشروع</span><span>الإنجاز</span><span>الصحة</span></div>
+        <div id="project-list" class="project-list"></div>
+      </div>
+
+      <article id="project-detail" class="project-detail" hidden></article>
+    </section>
+  </main>
+
+  <footer>© 2026 PMO.guide</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="assets/viewer.js"></script>
+</body>
+</html>
